@@ -1,3 +1,7 @@
+/*
+    DnD 的测试，主要是熟悉一下整个结构
+*/
+
 import QtQuick 2.0
 
 Item {

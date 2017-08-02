@@ -1,6 +1,11 @@
-import QtQuick 2.0
-//import QtQuick.Controls 2.0
+/*
+    拖动一个元素到Tab，新建Tab页。
+    存在问题：
+        1. addTab 只能通过Component，所以肯定是一个新的窗口，如果想要保存、恢复之前的窗口状态，就需要开发自己的机制。考虑实现自己的 TabView
+        2. DnD 各种事件还需要在深入了解一下
+*/
 
+import QtQuick 2.0
 import QtQuick.Controls 1.4
 
 Item {
@@ -24,10 +29,25 @@ Item {
             onReleased: {
                 if (tile.Drag.target !== null) {
                     parent = tile.Drag.target;
+                    console.log(tile.Drag.target);
+                    var dTarget = tile.Drag.target;
 
+
+                    console.log('--- children of drag target');
+                    for(var i = 0; i < dTarget.children.length; ++i) {
+                        console.log(i + ', ' + dTarget.children[i]);
+                        console.log(i + ', ' + dTarget.children[i].type);
+                        console.log(i + ', ' + dTarget.children[i].id);
+                    }
+                    console.log('--- end children of drag target');
+
+                    var foundTavView = dTarget.children[0]; // tabView
+
+                    // 这个返回 Object，不是Component
 //                    var newObject = Qt.createQmlObject('import QtQuick 2.0; Rectangle {color: "yellow"; width: 20; height: 20}', tabView, "Yellow Tab");
+
                     var yellowTab = Qt.createComponent("Page2Rect.qml")
-                    tabView.addTab("Yellow", yellowTab);
+                    foundTavView.addTab("Yellow", yellowTab);
                 } else {
                     parent = root;
                 }
@@ -40,7 +60,6 @@ Item {
 
             Rectangle {
                 id: tile
-
 
                 width: 64; height: 64
                 anchors.verticalCenter: parent.verticalCenter
@@ -88,7 +107,7 @@ Item {
         property string colorKey;
 //        property alias dropProxy: dragTarget
 
-        width: 300; height: 200
+        width: 400; height: 200
         x: 200; y: 200;
 
 //        keys: [ colorKey ]
@@ -114,8 +133,17 @@ Item {
 //                }
 //            ]
 //        }
+
+        onEntered: {
+            console.log('<<< onEntered');
+            console.log(drag);
+            console.log(drag.source);
+        }
+
         TabView {
             id: "tabView"
+            anchors.fill: parent
+
             Tab {
                 title: "Red"
                 Rectangle {
