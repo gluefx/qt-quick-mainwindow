@@ -13,7 +13,11 @@ ApplicationWindow {
         anchors.fill: parent
         currentIndex: tabBar.currentIndex
 
-        Page1 {
+//        Page1 {
+//        }
+
+        Page {
+            Page1Dock {}
         }
 
         Page {

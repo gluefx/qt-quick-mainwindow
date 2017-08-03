@@ -7,5 +7,6 @@
         <file>Page1SimpleDnD.qml</file>
         <file>Page2DnDAddTab.qml</file>
         <file>Page2Rect.qml</file>
+        <file>AXH_DnD.qml</file>
     </qresource>
 </RCC>

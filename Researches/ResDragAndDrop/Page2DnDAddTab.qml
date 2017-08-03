@@ -7,6 +7,8 @@
 
 import QtQuick 2.0
 import QtQuick.Controls 1.4
+//import QtQuick 2.7
+//import QtQuick.Controls 2.0
 
 Item {
     Item {
@@ -137,7 +139,13 @@ Item {
         onEntered: {
             console.log('<<< onEntered');
             console.log(drag);
-            console.log(drag.source);
+            console.log(drag.drag.source);
+        }
+
+        onDropped: {
+            console.log('<<< onDropped');
+            console.log(drop);
+            console.log(drop.drag.source);
         }
 
         TabView {

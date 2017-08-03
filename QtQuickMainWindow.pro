@@ -1,6 +1,8 @@
 TEMPLATE = subdirs
 
 SUBDIRS += \
-    Researches/ResDragAndDrop \
-    Researches/ResSplitView \
-    Researches/ResQuickApp
+    Researches \
+    Examples
+
+DISTFILES += \
+    Src/FxDockView.qml

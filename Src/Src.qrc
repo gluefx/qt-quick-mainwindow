@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/Src">
+        <file>DockView.qml</file>
+    </qresource>
+</RCC>
