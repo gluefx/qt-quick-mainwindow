@@ -31,7 +31,8 @@ Window {
         }
     }
 
-    SplitView {
+    FxSplitView {
+        visible: true
           anchors.fill: parent
           anchors.topMargin: 100
           orientation: Qt.Horizontal
@@ -62,6 +63,22 @@ Window {
                   text: "View 3"
                   anchors.centerIn: parent
               }
+          }
+      }
+
+    FxTabView {
+        visible: false
+          Tab {
+              title: "Red"
+              Rectangle { color: "red" }
+          }
+          Tab {
+              title: "Blue"
+              Rectangle { color: "blue" }
+          }
+          Tab {
+              title: "Green"
+              Rectangle { color: "green" }
           }
       }
 }

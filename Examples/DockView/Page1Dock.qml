@@ -8,7 +8,7 @@ Item {
 //        width: 60;
 //        height: 60;
         z: 2;
-        source: "qrc:/Src/DockView.qml";
+        source: "qrc:/Src/FxDockView.qml";
 //        onLoaded: item.color = "red";
     }
 
@@ -18,7 +18,7 @@ Item {
 //        width: 60;
 //        height: 60;
         z: 2;
-        source: "qrc:/Src/DockView.qml";
+        source: "qrc:/Src/FxDockView.qml";
 //        onLoaded: item.color = "red";
     }
 

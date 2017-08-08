@@ -7,6 +7,12 @@ Item {
 
     property string backgroundColor : "#262626";
     property string borderColor : "#399aca";
+    property string titleBarBackgroundColor :"#1A191A"
+
+    Rectangle {
+        id: titleBarBackground
+    }
+
     Rectangle {
         id: titleBar
 

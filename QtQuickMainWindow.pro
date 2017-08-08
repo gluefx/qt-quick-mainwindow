@@ -4,5 +4,5 @@ SUBDIRS += \
     Researches \
     Examples
 
-DISTFILES += \
-    Src/FxDockView.qml
+#DISTFILES += \
+#    Src/FxDockView.qml

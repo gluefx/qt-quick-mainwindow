@@ -2,5 +2,11 @@
     <qresource prefix="/">
         <file>main.qml</file>
         <file>QtSplitView.qml</file>
+        <file>QtTabView.qml</file>
+        <file>FxSplitView.qml</file>
+        <file>FxTabView.qml</file>
+        <file>FxTabViewStyle.qml</file>
+        <file>images/tab_selected.png</file>
+        <file>images/tab.png</file>
     </qresource>
 </RCC>

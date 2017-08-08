@@ -1,5 +1,5 @@
 <RCC>
     <qresource prefix="/Src">
-        <file>DockView.qml</file>
+        <file>FxDockView.qml</file>
     </qresource>
 </RCC>
