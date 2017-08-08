@@ -5,5 +5,7 @@
         <file>Page1Form.ui.qml</file>
         <file>qtquickcontrols2.conf</file>
         <file>Page1Dock.qml</file>
+        <file>images/cursor.png</file>
+        <file>Page2Drag.qml</file>
     </qresource>
 </RCC>

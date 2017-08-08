@@ -56,7 +56,8 @@ ApplicationWindow {
           }
           Tab {
               title: "Blue"
-              Rectangle { color: "blue" }
+//              Rectangle { color: "blue" }
+              Page2Drag {}
           }
           Tab {
               title: "Green"
