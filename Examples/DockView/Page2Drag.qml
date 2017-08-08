@@ -16,6 +16,8 @@ import QtQuick 2.8
               "text/plain": "Copied text"
           }
 
+
+
           Text {
               id: text
               anchors.centerIn: parent

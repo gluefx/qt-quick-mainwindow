@@ -4,8 +4,7 @@ import QtQuick.Controls 1.4
 Item {
     id: root
 
-    width: 200
-    height: 150
+    anchors.fill: parent
 
     property string backgroundColor : "#262626";
     property string borderColor : "#399aca";
@@ -15,15 +14,69 @@ Item {
 
     DropArea {
         id: dropArea
+
+//        property bool name: value
+        property string dragPosition: ""
+
+
         anchors.fill: parent
         z: 400
 
+        onEntered: {
+//            drag.accepted = true;
+            console.log("<<< onEntered");
+            console.log("onEntered, source - ", drag.source);
+            console.log("onEntered, source - ", drag.source);
+            console.log("onEntered, formats - ", drag.formats, " action - ", drag.action);
+            console.log("onEntered, name - ", drag.getDataAsString("name"));
+
+            console.log("size: " + root.width + ", " + root.height);
+
+        }
+
+        onPositionChanged: {
+//            console.log("onPositionChanged: " + drag.x + ", " + drag.y);
+
+            var dragX = drag.x;
+            var dragY = drag.y;
+            var rootWidth = root.width;
+            var rootHeight = root.height;
+
+            if (dragX > rootWidth / 3.0 && dragX < rootWidth * 2.0 / 3.0 &
+                dragY > rootHeight / 3.0 && dragY < rootHeight * 2.0 / 3.0    ) {
+                console.log("center");
+            }
+        }
+
+        onDropped: {
+            console.log(">>> onDropped");
+        }
+
+        onExited: {
+            console.log(">>> onExited");
+        }
+
         Rectangle {
+            z: 500
             anchors.fill: parent
 
-            color: Qt.rgba(0, 0, 1, 0.3)
+
+            color: Qt.rgba(1, 1, 1, 0.2)
             visible: parent.containsDrag
+//            visible: false
         }
+
+        Canvas {
+              id: mycanvas
+              z: 600
+              width: 20
+              height: 20
+              onPaint: {
+                  var ctx = getContext("2d");
+                  ctx.fillStyle = Qt.rgba(1, 0, 0, 0.1);
+                  ctx.fillRect(0, 0, width, height);
+              }
+          }
     }
 
     Rectangle {
@@ -33,7 +86,7 @@ Item {
         anchors.left: parent.left
 //        anchors.right: parent.right
 
-        width: 100
+        width: 80
         height: 25
 
         z: 300
@@ -48,7 +101,8 @@ Item {
         Drag.dragType: Drag.Automatic
         Drag.supportedActions: Qt.CopyAction
         Drag.mimeData: {
-            "text/plain": "Copied text"
+            "text/plain": "Copied text",
+            "name": "Test View"
         }
 
         MouseArea {

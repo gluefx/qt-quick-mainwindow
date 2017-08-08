@@ -5,8 +5,8 @@ Item {
     Loader {
         x: 100;
         y: 100;
-//        width: 60;
-//        height: 60;
+        width: 200;
+        height: 150;
         z: 2;
         source: "qrc:/Src/FxDockView.qml";
 //        onLoaded: item.color = "red";
@@ -15,8 +15,8 @@ Item {
     Loader {
         x: 350;
         y: 100;
-//        width: 60;
-//        height: 60;
+        width: 200;
+        height: 150;
         z: 2;
         source: "qrc:/Src/FxDockView.qml";
 //        onLoaded: item.color = "red";

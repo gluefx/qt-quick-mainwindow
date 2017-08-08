@@ -61,7 +61,7 @@ ApplicationWindow {
           }
           Tab {
               title: "Green"
-              Rectangle { color: "green" }
+//              Rectangle { color: "green" }
           }
       }
 
