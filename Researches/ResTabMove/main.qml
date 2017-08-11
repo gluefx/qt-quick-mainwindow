@@ -16,14 +16,14 @@ ApplicationWindow {
           anchors.fill: parent
           anchors.margins: 4
           Tab { title: "Tab 1"; Text{text:"Tab 1"} }
-          Tab { title: "Tab 2"; Text{text:"Tab 2"} }
+          Tab { title: "Tab 2 fdasfasdfasdfaswdf"; Text{text:"Tab 2"} }
           Tab { title: "Tab 3"; Text{text:"Tab 3"} }
 
           style: TabViewStyle {
               frameOverlap: 1
               tab: Rectangle {
                   color: styleData.selected ? "steelblue" :"lightsteelblue"
-                  border.color:  "steelblue"
+                  border.color:  "red"  //"steelblue"
                   implicitWidth: Math.max(text.width + 4, 80)
                   implicitHeight: 20
                   radius: 2
@@ -33,7 +33,52 @@ ApplicationWindow {
                       text: styleData.title
                       color: styleData.selected ? "white" : "black"
                   }
+                  Rectangle {
+                      id: closeButton
+                      visible: styleData.hovered
+                      anchors.top: parent.top
+                      anchors.right: parent.right
+                      anchors.bottom: parent.bottom
+
+                      anchors.topMargin: 2
+                      anchors.rightMargin: 2
+                      anchors.bottomMargin: 2
+                      width: 16
+                      color: "red"
+                      Text {
+                          text: "X"
+                          anchors.centerIn: parent
+                          color: "white"
+                      }
+
+                      MouseArea {
+                          anchors.fill: parent
+                          onClicked: {
+                              console.log("close: " + styleData.index);
+                              control.removeTab(styleData.index);
+                          }
+                      }
+                  }
               }
+              tabBar: Rectangle {
+                  color: "gray"
+                  Component {
+                      id: newTabContent
+                      Text {
+                          text: "xxx"
+                      }
+                  }
+
+                  MouseArea {
+                      anchors.fill: parent
+                      onDoubleClicked: {
+                          console.log("tabBar::onDoubleClicked");
+                          control.addTab("Tab xx", newTabContent);
+                          control.currentIndex = control.count - 1;
+                      }
+                  }
+              }
+
               frame: Rectangle { color: "steelblue" }
 
               tabsMovable: true
