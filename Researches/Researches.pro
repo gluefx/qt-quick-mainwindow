@@ -2,4 +2,5 @@ TEMPLATE = subdirs
 
 SUBDIRS += \
     ResDragAndDrop \
-    ResTabSplit
+    ResTabSplit \
+    ResTabMove
