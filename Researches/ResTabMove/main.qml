@@ -22,16 +22,55 @@ ApplicationWindow {
           style: TabViewStyle {
               frameOverlap: 1
               tab: Rectangle {
+                  id: tab
                   color: styleData.selected ? "steelblue" :"lightsteelblue"
                   border.color:  "red"  //"steelblue"
                   implicitWidth: Math.max(text.width + 4, 80)
-                  implicitHeight: 20
+                  implicitHeight: 30
                   radius: 2
+                  Drag.supportedActions: Qt.CopyAction;
+
+                  // onPressed 中设置 mouse.accepted = false; 后，就屏蔽了后续的事件
+                  // 这样，才能使用原本的tab位置变动功能。但是这样就不能使用自定义的拖放
+                  // 之后的 onDoubleClicked 事件也不会响应
+                  //
+
+//                  MouseArea {
+//                      anchors.fill: parent
+//                      drag.target: parent;
+////                      propagateComposedEvents: true
+//                      onPressed: {
+//                          console.log('onPressed');
+//                          mouse.accepted = false;
+//                      }
+
+//                      onDoubleClicked: {
+//                          console.log('tab db click');
+//                      }
+//                  }
+
                   Text {
                       id: text
                       anchors.centerIn: parent
                       text: styleData.title
                       color: styleData.selected ? "white" : "black"
+//                      MouseArea {
+//                          anchors.fill: parent
+//                          drag.target: parent;
+//    //                      propagateComposedEvents: true
+//                          onPressed: {
+//                              console.log('onPressed');
+////                              mouse.accepted = false;
+//                          }
+//                          onPressAndHold: {
+//                              console.log('onPressAndHold');
+//                              mouse.accepted = false;
+//                          }
+
+//                          onDoubleClicked: {
+//                              console.log('tab db click');
+//                          }
+//                      }
                   }
                   Rectangle {
                       id: closeButton
@@ -40,9 +79,9 @@ ApplicationWindow {
                       anchors.right: parent.right
                       anchors.bottom: parent.bottom
 
-                      anchors.topMargin: 2
-                      anchors.rightMargin: 2
-                      anchors.bottomMargin: 2
+                      anchors.topMargin: 4
+                      anchors.rightMargin: 4
+                      anchors.bottomMargin: 4
                       width: 16
                       color: "red"
                       Text {
